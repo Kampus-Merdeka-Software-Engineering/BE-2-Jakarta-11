@@ -1,11 +1,16 @@
 {
   "name": "package",
   "version": "1.0.0",
-  "description": "Belajar nodejs",
+  "description": "Belajar nodejs dulu",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
   },
-  "author": "Hilman Fat",
-  "license": "ISC"
+  "author": "Hilman Fatoni",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.18.2"
+  }
 }
