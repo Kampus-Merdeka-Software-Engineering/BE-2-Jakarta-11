@@ -12,7 +12,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// Middleware untuk meng-handle data JSON
+// Middleware untuk menghandle data JSON
 app.use(bodyParser.json());
 
 // Simpan data pengguna dalam bentuk array (sebagai contoh)
