@@ -6,7 +6,7 @@ const port = 3000;
 
 // Middleware untuk menangani CORS
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*'); // Ganti '*' dengan origin yang benar jika Anda tahu originnya.
+  res.header('Access-Control-Allow-Origin', 'https://magenta-rose-raven-hat.cyclic.app/'); // Ganti '*' dengan origin yang benar jika Anda tahu originnya.
   res.header('Access-Control-Allow-Methods', 'OPTIONS, POST, GET');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
   next();
