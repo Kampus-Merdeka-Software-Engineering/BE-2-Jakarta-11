@@ -14,10 +14,13 @@ class Contact {
   async save() {
     try {
       const sql = `INSERT INTO contactme (firstName, lastName, phoneNumber, email, subject, company, message) VALUES (?, ?, ?, ?, ?, ?, ?)`;
-      const result = await db.promise().execute(sql, [this.firstName, this.lastName, this.phoneNumber, this.email, this.subject, this.company, this.message]);
-      return result; // Adjust according to how your database returns the saved data
+      const values = [this.firstName, this.lastName, this.phoneNumber, this.email, this.subject, this.company, this.message];
+      
+      const [result] = await db.promise().execute(sql, values);
+      return result;
     } catch (error) {
-      throw new Error(error.message);
+      console.error("Error in Contact save:", error); // Lebih baik logging error
+      throw error; // Melempar error lebih lanjut untuk ditangani di lapisan atas
     }
   }
 }

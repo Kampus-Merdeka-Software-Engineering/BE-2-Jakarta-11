@@ -1,7 +1,10 @@
-// In services/contactService.js
-
 exports.addContact = async (contactData) => {
-  const contact = new Contact(contactData);
-  const savedContact = await contact.save();
-  return savedContact; // Ensure this returns the saved contact data
+  try {
+    const contact = new Contact(contactData);
+    const savedContact = await contact.save();
+    return savedContact;
+  } catch (error) {
+    console.error("Error in addContact:", error); // Log error
+    throw error; // Teruskan error
+  }
 };

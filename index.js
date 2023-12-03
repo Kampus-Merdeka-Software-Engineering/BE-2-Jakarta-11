@@ -14,9 +14,12 @@ app.use(bodyParser.json());
 const corsOptions = {
   origin: ['http://127.0.0.1:3001', 'https://kampus-merdeka-software-engineering.github.io'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true
+  credentials: true,
+  allowedHeaders: 'Content-Type,Authorization'
 };
+
 app.use(cors(corsOptions));
+
 
 // Menghubungkan rute untuk '/contact'
 app.use('/contact', contactRoute);
