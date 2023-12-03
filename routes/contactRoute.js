@@ -1,9 +1,11 @@
-const express = require('express');
-const contactController = require('../controllers/contactController');
+const Contact = require('../models/contactModel');
 
-const router = express.Router();
-
-router.post('/', contactController.createContact);
-
-
-module.exports = router;
+exports.createContact = async (req, res) => {
+  try {
+    const data = req.body;
+    await Contact.create(data);
+    res.status(200).json({ message: 'Contact saved successfully' });
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+};

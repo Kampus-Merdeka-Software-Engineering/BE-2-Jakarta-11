@@ -1,40 +1,23 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
 const contactRoute = require('./routes/contactRoute');
 const db = require('./configurations/dbConfig');
 
 const app = express();
 
-// Menggunakan bodyParser untuk memproses data JSON
 app.use(bodyParser.json());
+app.use(cors());
 
-// Konfigurasi CORS untuk mengizinkan permintaan dari frontend
-const corsOptions = {
-  origin: ['http://127.0.0.1:3001', 'https://kampus-merdeka-software-engineering.github.io'],
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,
-  allowedHeaders: 'Content-Type,Authorization'
-};
-
-app.use(cors(corsOptions));
-
-
-// Menghubungkan rute untuk '/contact'
 app.use('/contact', contactRoute);
 
-// Menginisialisasi koneksi database
-db.connect((error) => {
-  if (error) {
-    console.error('Error connecting to the database: ', error);
-    return;
-  }
-  console.log('Connected to the database successfully');
-});
-
-// Menentukan port untuk server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+db.sync()
+  .then(() => {
+    console.log('Database synchronized successfully');
+    app.listen(process.env.PORT || 3000, () => {
+      console.log(`Server running on port ${process.env.PORT || 3000}`);
+    });
+  })
+  .catch(error => {
+    console.error('Error syncing database: ', error);
+  });

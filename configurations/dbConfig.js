@@ -1,16 +1,19 @@
-const mysql = require('mysql2');
+const { Sequelize } = require('sequelize');
 
-const connection = mysql.createConnection({
-  host: 'mysql-237bc545-hilmanfatoni8-8cf9.a.aivencloud.com',
-  user: 'avnadmin',
-  password: 'AVNS_7fZ53zIaJueYDEM2oNF',
-  database: 'JavaJoya_database',
-  port: 23928
+const sequelize = new Sequelize({
+  dialect: 'mysql',
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  username: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  ssl: true,
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false
+    }
+  }
 });
 
-connection.connect(error => {
-  if (error) throw error;
-  console.log("Successfully connected to the database.");
-});
-
-module.exports = connection;
+module.exports = sequelize;

@@ -1,18 +1,35 @@
-const connection = require('./dbConfig');
+const { DataTypes } = require('sequelize');
+const sequelize = require('./dbConfig');
 
-const sql = `CREATE TABLE IF NOT EXISTS contactme (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  firstName VARCHAR(255) NOT NULL,
-  lastName VARCHAR(255) NOT NULL,
-  phoneNumber VARCHAR(255),
-  email VARCHAR(255) NOT NULL,
-  subject VARCHAR(255) NOT NULL,
-  company VARCHAR(255) NOT NULL,
-  message TEXT,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-)`;
-
-connection.query(sql, (error, result) => {
-  if (error) throw error;
-  console.log("Table created");
+const Contact = sequelize.define('Contact', {
+  firstName: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  lastName: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  phoneNumber: {
+    type: DataTypes.STRING,
+  },
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  subject: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  company: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  message: {
+    type: DataTypes.TEXT,
+  },
 });
+
+Contact.sync();
+
+module.exports = Contact;
