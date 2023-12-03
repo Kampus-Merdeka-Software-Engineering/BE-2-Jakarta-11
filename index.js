@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors'); // Tambahkan ini
+const cors = require('cors');
 
 const contactRoute = require('./routes/contactRoute');
 const db = require('./configurations/dbConfig');
@@ -10,12 +10,13 @@ const app = express();
 // Menggunakan bodyParser untuk memproses data JSON
 app.use(bodyParser.json());
 
-// Mengaktifkan CORS untuk semua request
-app.use(cors({
-  origin: 'https://kampus-merdeka-software-engineering.github.io',
+// Konfigurasi CORS untuk mengizinkan permintaan dari frontend
+const corsOptions = {
+  origin: ['http://127.0.0.1:3001', 'https://kampus-merdeka-software-engineering.github.io'],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,
-}));
+  credentials: true
+};
+app.use(cors(corsOptions));
 
 // Menghubungkan rute untuk '/contact'
 app.use('/contact', contactRoute);
