@@ -1,28 +1,34 @@
-const db = require('../configurations/dbConfig');
+const { DataTypes } = require('sequelize');
+const sequelize = require('../configurations/dbConfig');
 
-class Contact {
-  constructor(contactData) {
-    this.firstName = contactData.firstName;
-    this.lastName = contactData.lastName;
-    this.phoneNumber = contactData.phoneNumber;
-    this.email = contactData.email;
-    this.subject = contactData.subject;
-    this.company = contactData.company;
-    this.message = contactData.message;
+const Contact = sequelize.define('Contact', {
+  firstName: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  lastName: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  phoneNumber: {
+    type: DataTypes.STRING
+  },
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  subject: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  company: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  message: {
+    type: DataTypes.TEXT,
+    allowNull: false
   }
-
-  async save() {
-    try {
-      const sql = `INSERT INTO contactme (firstName, lastName, phoneNumber, email, subject, company, message) VALUES (?, ?, ?, ?, ?, ?, ?)`;
-      const values = [this.firstName, this.lastName, this.phoneNumber, this.email, this.subject, this.company, this.message];
-      
-      const [result] = await db.promise().execute(sql, values);
-      return result;
-    } catch (error) {
-      console.error("Error in Contact save:", error); // Lebih baik logging error
-      throw error; // Melempar error lebih lanjut untuk ditangani di lapisan atas
-    }
-  }
-}
+});
 
 module.exports = Contact;
