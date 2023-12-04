@@ -7,7 +7,11 @@ const app = express();
 
 const corsOptions = {
   origin: 'https://kampus-merdeka-software-engineering.github.io',
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  methods: 'GET,POST',
+  credentials: true,
+  preflightContinue: false,
+  optionsSuccessStatus: 204,
+  allowedHeaders: 'Content-Type',
 };
 
 app.use(cors(corsOptions));
