@@ -6,17 +6,9 @@ const contactRoute = require('./routes/contactRoute');
 const app = express();
 
 // Middleware untuk menangani CORS
-const allowedOrigins = ['https://kampus-merdeka-software-engineering.github.io'];
 app.use(cors({
-  origin: function (origin, callback) {
-    // Periksa apakah asal ada dalam daftar yang diizinkan
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true, // Izinkan pengiriman kredensial (contoh: token otentikasi)
+  origin: 'https://kampus-merdeka-software-engineering.github.io', // Sesuaikan dengan origin frontend Anda
+  credentials: true,
 }));
 
 // Middleware untuk mengurai body permintaan menjadi objek JSON
