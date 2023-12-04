@@ -1,7 +1,10 @@
-const express = require('express');
-const contactController = require('../controllers/contactController');
-const router = express.Router();
+// ini contactRoute.js
 
-router.post('/', contactController.createContact);
+const express = require('express');
+const router = express.Router();
+const contactController = require('../controllers/contactController');
+
+router.post('/submit', contactController.createContact);
+router.get('/getAll', contactController.getAllContacts);
 
 module.exports = router;

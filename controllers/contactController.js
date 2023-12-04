@@ -1,11 +1,23 @@
+// ni contactController.js
+
 const Contact = require('../models/contactModel');
 
 exports.createContact = async (req, res) => {
-  try {
-    const data = req.body;
-    const contact = await Contact.create(data);
-    res.status(200).json(contact);
-  } catch (error) {
-    res.status(500).send(error.message);
-  }
+    try {
+        const newContact = await Contact.create(req.body);
+        res.status(201).json(newContact);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+};
+
+exports.getAllContacts = async (req, res) => {
+    try {
+        const contacts = await Contact.findAll();
+        res.status(200).json(contacts);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 };
