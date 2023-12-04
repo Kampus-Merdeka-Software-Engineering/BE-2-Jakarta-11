@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 app.use('/api/contact', contactRoute); //Assuming your API route is /api/contact
 
-const PORT = process.env.DB_PORT || 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
