@@ -6,10 +6,10 @@ const contactRoute = require('./routes/contactRoute');
 const app = express();
 
 // Middleware untuk menangani CORS
-const allowedOrigins = ['https://kampus-merdeka-software-engineering.github.io', 'http://localhost:3001'];
+const allowedOrigins = ['https://kampus-merdeka-software-engineering.github.io'];
 app.use(cors({
   origin: function (origin, callback) {
-    // Periksa apakah asal ada dalam daftar yang diizinkan, atau jika tidak ada asal yang diberikan (misalnya, permintaan lokal)
+    // Periksa apakah asal ada dalam daftar yang diizinkan
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
