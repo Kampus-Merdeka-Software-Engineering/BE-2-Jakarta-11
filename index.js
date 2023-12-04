@@ -8,7 +8,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-app.use('/api/contact', contactRoute); // Assuming your API route is /api/contact
+app.use('/api/contact', contactRoute); //Assuming your API route is /api/contact
 
 const PORT = process.env.DB_PORT || 3000;
 app.listen(PORT, () => {

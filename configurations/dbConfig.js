@@ -1,5 +1,5 @@
 
-// ini dbConfig.js
+// ni dbConfig.js
 
 require('dotenv').config(); // Load konfigurasi dari file.env
 const { Sequelize } = require('sequelize');

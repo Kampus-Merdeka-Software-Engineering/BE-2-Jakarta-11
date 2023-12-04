@@ -1,4 +1,4 @@
-// ini contactController.js
+// ni contactController.js
 
 const Contact = require('../models/contactModel');
 

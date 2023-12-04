@@ -34,7 +34,7 @@ const Contact = sequelize.define('infocontact', {
     type: DataTypes.TEXT,
   },
 }, {
-  timestamps: true, // Aktifkan timestamps
+  timestamps: true, //Aktifkan timestamps
   createdAt: 'created_at', // Ganti nama kolom createdAt menjadi created_at
   updatedAt: 'updated_at', // Ganti nama kolom updatedAt menjadi updated_at
 });
