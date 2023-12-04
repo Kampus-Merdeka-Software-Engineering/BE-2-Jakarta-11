@@ -5,16 +5,17 @@ const contactRoute = require('./routes/contactRoute');
 
 const app = express();
 
-// Middleware untuk menangani CORS
-app.use(cors({
-  origin: 'https://kampus-merdeka-software-engineering.github.io', // Sesuaikan dengan origin frontend Anda
-  credentials: true,
-}));
+// Set konfigurasi CORS
+const corsOptions = {
+  origin: 'https://kampus-merdeka-software-engineering.github.io', // Ganti dengan URL front end Anda
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true, // Mengizinkan pengiriman cookie melalui CORS
+  optionsSuccessStatus: 204, // Memberikan status 204 untuk metode OPTIONS
+};
 
-// Middleware untuk mengurai body permintaan menjadi objek JSON
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
-// Gunakan route yang telah didefinisikan
 app.use('/api/contact', contactRoute);
 
 const PORT = process.env.PORT || 3000;
