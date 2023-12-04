@@ -5,12 +5,17 @@ const contactRoute = require('./routes/contactRoute');
 
 const app = express();
 
-app.use(cors());
+const corsOptions = {
+  origin: 'https://kampus-merdeka-software-engineering.github.io',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+};
+
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
-app.use('/api/contact', contactRoute); //Assuming your API route is /api/contact
+app.use('/api/contact', contactRoute);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
