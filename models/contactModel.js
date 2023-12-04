@@ -39,7 +39,7 @@ const Contact = sequelize.define('infocontact', {
   updatedAt: 'updated_at', // Ganti nama kolom updatedAt menjadi updated_at
 });
 
-Contact.sync({ force: true }) // Untuk menghindari duplicate table, force: true hanya untuk development
+Contact.sync({ force: true }) // Untuk menghindari duplicate table, force: true hanya untuk developmen
   .then(() => {
     console.log('Table created');
   })

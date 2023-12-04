@@ -1,4 +1,7 @@
-require('dotenv').config(); // Load konfigurasi dari file .env
+
+// ini dbConfig.js
+
+require('dotenv').config(); // Load konfigurasi dari file.env
 const { Sequelize } = require('sequelize');
 
 const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
