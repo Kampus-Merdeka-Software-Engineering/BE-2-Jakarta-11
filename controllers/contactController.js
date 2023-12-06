@@ -1,5 +1,3 @@
-// ni contactController.js
-
 const Contact = require('../models/contactModel');
 
 exports.createContact = async (req, res) => {
