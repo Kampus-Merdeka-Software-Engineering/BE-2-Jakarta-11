@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../configurations/dbConfig');
 
+// Membuat model Sequelize untuk tabel "infocontact"
 const Contact = sequelize.define('infocontact', {
   id: {
     type: DataTypes.INTEGER,
@@ -39,6 +40,7 @@ const Contact = sequelize.define('infocontact', {
   updatedAt: 'updated_at', // Ganti nama kolom updatedAt menjadi updated_at
 });
 
+// Sinkronkan model dengan database
 Contact.sync({ force: false }) // Ubah force menjadi false
   .then(() => {
     console.log('Table created');
