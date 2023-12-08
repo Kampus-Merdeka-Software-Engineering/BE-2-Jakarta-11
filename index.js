@@ -16,6 +16,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
 
+// Menetapkan rute untuk kontak
 app.use('/api/contact', contactRoute);
 
 const PORT = process.env.PORT || 3000;
